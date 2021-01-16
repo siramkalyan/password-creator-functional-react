@@ -2,7 +2,7 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-# Website is deplyed here [passowrd-creator-functional-app]https://password-creator.netlify.app/
+Website is deplyed here [passowrd-creator-functional-app] (https://password-creator.netlify.app/).
 # Installing the scripts
 
 ### `npm install ` 
