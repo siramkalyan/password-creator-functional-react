@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react';
 import db from './Firebase';
-import { collection, addDoc , doc ,setDoc , query , onSnapshot} from "firebase/firestore"; 
+import { collection,  query , onSnapshot} from "firebase/firestore"; 
 
 const Todos = ({todos,markComplete}) => {
      const [todo1, settodo1] = React.useState([])

@@ -1,11 +1,10 @@
-import logo from './logo.svg';
 import './App.css';
 import React,{useState} from 'react';
 import Todos from './Todo';
 import TodoForm from './TodoForm';
 
 import db from './Firebase';
-import { collection, addDoc , doc ,setDoc , onSnapshot , query} from "firebase/firestore"; 
+import { collection, addDoc } from "firebase/firestore"; 
 function App()
 {
   const [state,setState] = useState([{
