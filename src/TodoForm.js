@@ -14,9 +14,7 @@ const TodoForm = ({addTodo}) =>{
         addTodo(value);
         setvalue('');           //set the value to be empty again to get ready for next input
     };
-
-  
-
+    
     return(
         <div className={"container"}>
             <div className="App">Passowrd Creator</div>

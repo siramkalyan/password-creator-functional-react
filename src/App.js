@@ -3,6 +3,9 @@ import './App.css';
 import React,{useState} from 'react';
 import Todos from './Todo';
 import TodoForm from './TodoForm';
+
+import db from './Firebase';
+import { collection, addDoc , doc ,setDoc , onSnapshot , query} from "firebase/firestore"; 
 function App()
 {
   const [state,setState] = useState([{
@@ -33,8 +36,13 @@ function generateP() {
 }
 const addTodo = (todo) =>
 {
-  setState([...state,{name : todo,password : generateP()}]);
+  const pass = generateP();
+  setState([...state,{name : todo,password : pass}]);
+  //const addpassRef = doc(db, "password-saver", "users1")
+  //const addpass =  setDoc(addpassRef, {name : todo,password : pass},{merge : true});
+  const addp = addDoc(collection(db,"password-saver"),{name : todo,password : pass});
   console.log({state});
+  
 }
 const markComplete = (index) => {
   const newState = [...state];
