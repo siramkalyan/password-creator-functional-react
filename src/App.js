@@ -20,7 +20,7 @@ function App()
   isCompleted : false,
 },]);
 
-function generateP() { 
+ function generateP() { 
   var pass = ''; 
   var str = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' +  'abcdefghijklmnopqrstuvwxyz0123456789@#$'; 
    var i = 0; 
