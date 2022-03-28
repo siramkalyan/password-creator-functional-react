@@ -2,7 +2,6 @@ import './App.css';
 import React,{useState} from 'react';
 import Todos from './Todo';
 import TodoForm from './TodoForm';
-
 import db from './Firebase';
 import { collection, addDoc } from "firebase/firestore"; 
 function App()
@@ -36,10 +35,11 @@ function App()
 const addTodo = (todo) =>
 {
   const pass = generateP();
+  let user = localStorage.getItem('user') || '';
   setState([...state,{name : todo,password : pass}]);
   //const addpassRef = doc(db, "password-saver", "users1")
   //const addpass =  setDoc(addpassRef, {name : todo,password : pass},{merge : true});
-  const addp = addDoc(collection(db,"password-saver"),{name : todo,password : pass});
+  const addp = addDoc(collection(db,"password-saver"),{name : todo,password : pass,email : user });
   console.log({state});
   
 }

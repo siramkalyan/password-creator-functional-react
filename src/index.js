@@ -3,9 +3,11 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
+import Login from './login';
+//console.log(user)
+let user = localStorage.getItem('user')
 ReactDOM.render(
-    <App />,
+    user ? <App/> : <Login />,
   document.getElementById('root')
 );
 

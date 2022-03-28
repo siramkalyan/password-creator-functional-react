@@ -1,13 +1,14 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react';
 import db from './Firebase';
-import { collection,  query , onSnapshot, deleteDoc, doc, setDoc} from "firebase/firestore"; 
+import { collection,  query , onSnapshot, deleteDoc, doc, setDoc , where} from "firebase/firestore"; 
 import {AiOutlineDelete , AiOutlineReload} from 'react-icons/ai';
 import './App.css'
 const Todos = ({todos,markComplete}) => {
      const [todo1, settodo1] = React.useState([])
+     let user = localStorage.getItem('user') || '';
     React.useEffect( async () => {
-        const q = query(collection(db, "password-saver"));
+        const q = query(collection(db, "password-saver"),where("email", "==", user));
         const unsubscribe = onSnapshot(q, (querySnapshot) => {
             const cities = [];
             querySnapshot.forEach((doc) => {
