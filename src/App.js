@@ -4,6 +4,7 @@ import Todos from './Todo';
 import TodoForm from './TodoForm';
 import db from './Firebase';
 import { collection, addDoc } from "firebase/firestore"; 
+const CryptoJS = require("crypto-js")
 function App()
 {
   const [state,setState] = useState([{
@@ -34,12 +35,13 @@ function App()
 }
 const addTodo = (todo) =>
 {
-  const pass = generateP();
+  var pass = generateP();
+  var pass1 = CryptoJS.AES.encrypt(pass, 'secret key 123').toString();
   let user = localStorage.getItem('user') || '';
   setState([...state,{name : todo,password : pass}]);
   //const addpassRef = doc(db, "password-saver", "users1")
   //const addpass =  setDoc(addpassRef, {name : todo,password : pass},{merge : true});
-  const addp = addDoc(collection(db,"password-saver"),{name : todo,password : pass,email : user });
+  const addp = addDoc(collection(db,"password-saver"),{name : todo,password : pass1,email : user,date : new Date() });
   console.log({state});
   
 }

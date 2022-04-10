@@ -4,6 +4,7 @@ import db from './Firebase';
 import { collection,  query , onSnapshot, deleteDoc, doc, setDoc , where} from "firebase/firestore"; 
 import {AiOutlineDelete , AiOutlineReload} from 'react-icons/ai';
 import './App.css'
+var CryptoJS= require("crypto-js")
 const Todos = ({todos,markComplete}) => {
      const [todo1, settodo1] = React.useState([])
      let user = localStorage.getItem('user') || '';
@@ -54,16 +55,17 @@ function generateP() {
   }
 const updatepass = (e) =>{
     let result = generateP();
+    var pass1 = CryptoJS.AES.encrypt(result, 'secret key 123').toString();
     console.log(result);
     const cityRef = doc(db, 'password-saver', e.target.id.toString());
-    setDoc(cityRef, { password: result }, { merge: true })
+    setDoc(cityRef, { password: pass1 }, { merge: true })
 
 }
 const Todo = ({todo, index,markComplete, doc1}) =>(
     <div className="todo">
         {/*<p style={{textDecoration : todo.isCompleted ? "line-through" : ""}} >
             <input type={"checkbox"} onChange={() => markComplete(index)}  name={"completed"} id={todo.id} />{' '}*/}
-            {todo.name} {'Password is :-'} {todo.password}
+            {todo.name} {'Password is :-'} {CryptoJS.AES.decrypt(todo.password, 'secret key 123').toString(CryptoJS.enc.Utf8)}
         <AiOutlineDelete onClick={delete1} id = {doc1} />
         <AiOutlineReload onClick={updatepass} id={doc1}/>
     </div>

@@ -19,7 +19,7 @@ const TodoForm = ({addTodo}) =>{
         <div className={"container"}>
             <div className="App">Passowrd Creator</div>
             <form  className="App"  onSubmit={handleAdd}>
-                <input   className={"form-control col-md-8 "} type={"textarea"} placeholder={"Add a ToDo"} value={value} onChange={handleChange}/>
+                <input   className={"form-control col-md-8 "} type={"textarea"} placeholder={"Website Name"} value={value} onChange={handleChange}/>
                 <input className={"form-control btn-primary col-md-4 submit-button"} type={"submit"} value={"Add"}/>
             </form>
         </div>
